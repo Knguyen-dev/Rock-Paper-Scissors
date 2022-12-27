@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <section class="main">
+      <!-- Header section: contains scores and players -->
+      <section class="header">
+        <!-- Title -->
+        <h1>Rock Paper Scissors</h1>
+        <!-- Players container -->
+        <div class="players-container">
+          <!-- Container for the user -->
+          <article id="user">
+            <div class="img-container">
+              <img class="player-image" src="player-img.jpg" alt="Player Picture">
+            </div>
+            <h2>You</h2>
+            <h3 id="score">0</h3>
+          </article>
+
+          <h1>Versus</h1>
+
+          <!-- Container for the computer -->
+          <article id="computer">
+            <div class="img-container">
+              <img class="player-image" src="computer-img.jpg" alt="Computer Picture">
+            </div>
+            <h2>Computer</h2>
+            <h3 id="score">0</h3>
+          </article>
+        </div>
+        
+      </section>
+
+      <!-- Button container section -->
+  
+      <section class="buttons-container">
+        <button id="rock-btn">rock</button>
+        <button id="paper-btn">paper</button>
+        <button id="scissors-btn">scissors</button>
+      </section>
+
+    </section>
+    
+
+
+    <script src="app.js"></script>
+  </body>
+</html>
