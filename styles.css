@@ -8,6 +8,13 @@ body {
   font-size: 16px;
 }
 
+button {
+  cursor: pointer;
+  font-weight: 500;
+  font-family: monospace;
+  transition: all ease-in-out 0.2s;
+}
+
 .header {
   color: white;
   background-color: #1f2937;
@@ -30,7 +37,6 @@ body {
   border-radius: 6px;
   border: 2px solid #e3ecf8;
 }
-
 .player-image {
   object-fit: cover;
   height: 8em;
@@ -39,4 +45,21 @@ body {
 
 .buttons-container {
   background-color: silver;
+  display: flex;
+  justify-content:  space-evenly;
+  align-items: center;
+  padding: 3em 1em;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+.buttons-container button {
+  font-size: 1.2rem;
+  padding: 0.5em 1.5em;
+  background-color: ghostwhite;
+  color: black;
+}
+.buttons-container button:hover {
+  background: black;
+  color: ghostwhite;
 }
