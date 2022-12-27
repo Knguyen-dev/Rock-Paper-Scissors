@@ -15,6 +15,12 @@ button {
   transition: all ease-in-out 0.2s;
 }
 
+
+.main {
+  margin-bottom: 0;
+  overflow: 
+}
+/* header section */
 .header {
   color: white;
   background-color: #1f2937;
@@ -22,6 +28,7 @@ button {
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 2em;
 }
 
 .players-container {
@@ -35,14 +42,28 @@ button {
 .players-container article {
   overflow: hidden;
   border-radius: 6px;
-  border: 2px solid #e3ecf8;
+  background-color: aqua;
+  padding: 1em 1.5em; 
 }
 .player-image {
   object-fit: cover;
   height: 8em;
   width: 8em;
 }
+/* Output section styling */
+.output-section {
+  background-color: deepskyblue;
+  color: ghostwhite;
+  padding: 3em 2em;
+}
+.output-section p {
+  width: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+/* button section styling */
 .buttons-container {
   background-color: silver;
   display: flex;
@@ -50,6 +71,7 @@ button {
   align-items: center;
   padding: 3em 1em;
   gap: 2em;
+  height: 24vh;
   flex-wrap: wrap;
 }
 
