@@ -21,7 +21,7 @@
               <img class="player-image" src="player-img.jpg" alt="Player Picture">
             </div>
             <h2>You</h2>
-            <h3 id="user-lives">0</h3>
+            <h3>Lives: <span id="player-lives"></span></h3>
           </article>
 
           <h1>Versus</h1>
@@ -32,7 +32,7 @@
               <img class="player-image" src="computer-img.jpg" alt="Computer Picture">
             </div>
             <h2>Computer</h2>
-            <h3 id="computer-lives">0</h3>
+            <h3>Lives: <span id="computer-lives"></span></h3>
           </article>
         </div>
       </section>
@@ -43,23 +43,24 @@
           <p class="player-choice">Player's Choice</p>
           <p class="computer-choice">Computer's Choice </p>
         </article>
-        <p id="output-event">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illo atque excepturi. Reiciendis vel similique blanditiis voluptates aspernatur fugit minima.</p>
+        <p id="game-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam illo atque excepturi. Reiciendis vel similique blanditiis voluptates aspernatur fugit minima.</p>
       </section>
 
       <!-- Button container section -->
       <section class="buttons-container">
-        <button class="main-btn" data-id="rock">Rock</button>
-        <button class="main-btn" data-id="paper">Paper</button>
-        <button class="main-btn" data-id="scissors">Scissors</button>
+        <button class="main-btn" data-id="Rock">Rock</button>
+        <button class="main-btn" data-id="Paper">Paper</button>
+        <button class="main-btn" data-id="Scissors">Scissors</button>
       </section>
 
 
       <section class="game-results content-hidden">
         <article class="stats">
           <h2 id="result">Player wins!</h2>
-          <h1 id="total-rounds">Total Rounds: 8</h1>
-          <p id="player-victories">Player wins: 5</p>
-          <p id="computer-victories">Computer wins: 3</p>
+          <h1>Total Rounds: <span id="total-rounds"></span></h1>
+          <p>Player wins: <span id="player-victories"></span></p>
+          <p>Computer wins: <span id="computer-victories"></span></p>
+          <p>Number of ties: <span id="num-ties"></span></p>
         </article>
         
         <button class="play-again">Play Again?</button>
