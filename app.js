@@ -1,12 +1,4 @@
-/*
-- Not properly recording total rounds and ties. Also the play again functionality
-is not working either
-
-
-*/
-
-
-// Lives/score, output section, and buttons for user interaction
+// Lives/score, output section that shows what each player picked, and buttons for user interaction
 const playerLivesEl = document.getElementById('player-lives');
 const computerLivesEl = document.getElementById('computer-lives');
 const playerChoiceEl = document.querySelector('.player-choice');
@@ -14,18 +6,16 @@ const computerChoiceEl = document.querySelector('.computer-choice');
 const gameMessageEl = document.getElementById('game-message');
 const userBtns = document.querySelectorAll('.main-btn');
 
-
 // Elements for updating the game results at the end
-const gameResultModal = document.querySelector('.game-results'); 
-const gameResultEl = document.getElementById('result');
+const gameResultsModal = document.querySelector('.game-results'); 
+const gameResultEl = document.getElementById('result');     
 const playerWinsEl = document.getElementById('player-victories');
 const computerWinsEl = document.getElementById('computer-victories');
 const totalRoundsEl = document.getElementById('total-rounds');
 const numTiesEl = document.getElementById('num-ties');
-
 const newGameBtn = document.querySelector('.play-again');
 
-// Initialize the lives that the user and computer start with
+// Initialize the lives that the user and computer start with;
 let playerLives = 5;
 let computerLives = 5;
 let totalRounds = 0;
@@ -40,24 +30,23 @@ const choices = {
   2: 'Scissors'
 };
 
-
 // Generates a choice for the computer
 function generateChoice() {
   const randomNumber = Math.floor(Math.random() * 3); //generates a number between 0 - 2
-  return choices[randomNumber];    //gets the choice from the object
+  return choices[randomNumber];    //use that random number to access a property from the 'choices' object, which effectively yields rock, paper, or scissors
 }
 
-// Decides who wins the round
+// Decides who wins an individual round
 function decideRound(playerChoice, computerChoice) {
   let result;
-  if (playerChoice == computerChoice) { //If they pick the same option
-    result = "It's a Tie!";        //For all other cases its either true or false, but here we want to make a distinction that it's a tie for a particular round.
+  if (playerChoice == computerChoice) { //If both pick the same option, then it's a tie 
+    result = "It's a Tie!";        
   } else { 
-    if (playerChoice== 'Rock') {       //if player picks rock
+    if (playerChoice== 'Rock') {       //if player picks rock then the computer loses when picking scissors
       if (computerChoice == 'Scissors') {
         computerLives -= 1;
         result = "Player wins the round";
-      } else {
+      } else {    //This would mean the computer picked paper, which means the player would lose. The computer can't have rock here because that was checked in the former conditional
         playerLives -= 1;
         result = "Computer wins the round";
       }
@@ -86,46 +75,49 @@ function decideRound(playerChoice, computerChoice) {
   } else if (result == "Computer wins the round") {
     computerVictories += 1;
   } else {
-    console.log('Its a tie');
     numTies += 1;
   }
-
+  //Continues to add on the amount of rounds being played 
   totalRounds += 1;
-  console.log(`Total rounds ${totalRounds}`);
-  return result;
+  return result; //returns the result of the round, which is who won it.
 }
 
-// Checks if the game is over
+// Checks if either the computer or the player won the game
 function decideGame() {
   let result;
-  if (playerLives == 0) {
+  if (playerLives == 0) { //if the player has no lives left then the computer won against them
     result = "Computer wins!";
-  } else if (computerLives == 0) {
+  } else if (computerLives == 0) { //otherwise if the computer has no lives left, then the player won
     result = "Player wins!";
-  } else {
+  } else {  //Else, both have lives left so the game is still ongoing.
     result = "Game Ongoing";
-  }
+  } //Return this result 
   return result;
 
 }
 
 
-// Renders the result of the round or game on screen
-// Will update the lives on screen, then it will display an output message depending on who lost or won
+// Renders the result of the round/game on screen
 function renderGame(result) {
+  // Updates the lives
   playerLivesEl.textContent = playerLives;
   computerLivesEl.textContent = computerLives;
+  
+  //Displays what the user and the computer picked 
   playerChoiceEl.textContent = playerChoice;
   computerChoiceEl.textContent = computerChoice;
 
+  // If this conditional is true, then either the computer or the player has won the entire game
   if ((result == "Computer wins!") || (result == "Player wins!")) {
-    gameResultModal.classList.remove('content-hidden');
-    gameResultEl.textContent = result;
-    totalRoundsEl.textContent = totalRounds;
+    gameResultsModal.classList.remove('content-hidden'); //Show the game results modal that will show the stats and results of the game
+    gameResultEl.textContent = result;        //Shows whether the computer or the player won
+
+    // Shows statistics such as the total rounds played, number of wins, etc.
+    totalRoundsEl.textContent = totalRounds;  
     playerWinsEl.textContent = playerVictories;
     computerWinsEl.textContent = computerVictories;
     numTiesEl.textContent = numTies;
-  } else {
+  } else { //Else, either the player or computer won a round, but not the entire game. Then render a game message saying whether the player won, lost, or tied with the computer
     if (result == "Player wins the round") {
       gameMessageEl.textContent = "You were favorable in the duel!";
     } else if (result == "Computer wins the round") {
@@ -134,8 +126,21 @@ function renderGame(result) {
       gameMessageEl.textContent = "Evenly Matched, a tie!";
     }
   }
-
 };
+
+// Render the remaining lives of the players and starting game message
+function startGame() {
+  playerLivesEl.textContent = playerLives;
+  computerLivesEl.textContent = computerLives;
+  playerChoiceEl.textContent = "Player's Choice will be displayed here";
+  computerChoiceEl.textContent = "Computer's Choice will be displayed here";
+  gameMessageEl.textContent = "Welcome to Rock, Paper, Scissors brought to you by the same people who created cold pencils.";
+}
+
+// Starts game when webpage is loaded
+window.addEventListener('DOMContentLoaded', function() {
+  startGame();
+})
 
 /*
 - Call a function that will check the status of the game. If the game hasn't ended, then
@@ -167,17 +172,6 @@ newGameBtn.addEventListener('click', function() {
   computerVictories = 0;
   totalRounds = 0; 
   numTies = 0;
+  gameResultsModal.classList.add('content-hidden');
   startGame();
 });
-// Render lives and starting game message
-function startGame() {
-  playerLivesEl.textContent = playerLives;
-  computerLivesEl.textContent = computerLives;
-  playerChoiceEl.textContent = "Player's Choice will be displayed here";
-  computerChoiceEl.textContent = "Computer's Choice will be displayed here";
-  gameMessageEl.textContent = "Welcome to Rock, Paper, Scissors brought to you by the same people who created cold pencils.";
-}
-
-window.addEventListener('DOMContentLoaded', function() {
-  startGame();
-})

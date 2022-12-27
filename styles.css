@@ -103,7 +103,7 @@ button {
   color: black;
 }
 
-/* Game results styling */
+/* Game results styling: Styles the results modal */
 .game-results {
   background-color:black;
   opacity: 0.8;
@@ -112,14 +112,22 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 0.5em;
   padding: 1.5em 0;
+}
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-basis: 40%;
+
 }
 
 .play-again {
